@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
+ <head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="telephone=no" name="format-detection">
+  <link rel="stylesheet" href="https://cloud.label-pulse.com/static/campaigns/styles/promo_template.css">
+  <title>Promo Template</title>
+ </head>
+ <body class="body" style="width:100%;height:100%;padding:0;Margin:0">
+  <div dir="ltr" class="es-wrapper-color" lang="en" style="background-color:#FAFAFA">
+   <table width="100%" cellspacing="0" cellpadding="0" class="es-wrapper" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top;background-color:#FAFAFA">
+     <tr>
+      <td valign="top" style="padding:0;Margin:0">
+       <table cellpadding="0" cellspacing="0" align="center" class="es-content" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%;table-layout:fixed !important;margin-top: 20px;">
+         <tr>
+          <td align="center" style="padding:0;Margin:0">
+           <table bgcolor="#ffffff" align="center" cellpadding="0" cellspacing="0" class="es-content-body" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;width:600px" role="none">
+             <tr>
+              <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-right:20px;padding-left:20px">
+               <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                 <tr>
+                  <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                   <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px;font-size:0px"><img src="{{ banner }}" alt="Release banner image" width="560" class="adapt-img" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none"></td>
+                     </tr>
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-top:10px"><h1 class="es-m-txt-c" style="Margin:0;font-family:arial, 'helvetica neue', helvetica, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:46px;font-style:normal;font-weight:bold;line-height:46px;color:#333333"><strong>{{ title }} {{ type }}</strong></h1></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+           </table></td>
+         </tr>
+       </table>
+       <table cellpadding="0" cellspacing="0" align="center" class="es-content" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%;table-layout:fixed !important">
+         <tr>
+          <td align="center" style="padding:0;Margin:0">
+           <table bgcolor="#ffffff" align="center" cellpadding="0" cellspacing="0" class="es-content-body" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
+             <tr>
+              <td align="left" style="Margin:0;padding-right:20px;padding-left:20px;padding-top:5px;padding-bottom:20px">
+               <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                 <tr>
+                  <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                   <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0"><h2 class="es-m-txt-c" style="Margin:0;font-family:arial, 'helvetica neue', helvetica, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:26px;font-style:normal;font-weight:bold;line-height:31.2px;color:#333333">{{ artist_name }}</h2></td>
+                     </tr>
+                     <tr>
+                      <td align="justify" style="padding:0;Margin:0;padding-bottom:20px;padding-top:20px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:16.8px !important;letter-spacing:0;color:#333333;font-size:14px">{{ description }}</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+              {% for track in tracks %}
+                <tr>
+                  <td align="left" class="esdev-adapt-off es-m-p20b" style="Margin:0;padding-right:20px;padding-left:20px;padding-top:10px;padding-bottom:10px">
+                  <table cellpadding="0" cellspacing="0" class="esdev-mso-table" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:560px">
+                    <tr>
+                      <td valign="top" class="esdev-mso-td" style="padding:0;Margin:0">
+                      <table cellpadding="0" cellspacing="0" align="left" class="es-left" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr>
+                          <td align="center" class="es-m-p0r" style="padding:0;Margin:0;width:58px">
+                          <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                            <tr>
+                              <td align="center" class="es-m-txt-c" style="padding:0;Margin:0;font-size:0px"><img src="{{ artwork }}" alt="Release artwork image" width="58" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none"></td>
+                            </tr>
+                          </table></td>
+                        </tr>
+                      </table></td>
+                      <td class="es-m-w0" style="padding:0;Margin:0;width:20px"></td>
+                      <td class="es-m-w0" style="padding:0;Margin:0;width:20px"></td>
+                      <td valign="top" class="esdev-mso-td" style="padding:0;Margin:0">
+                      <table cellpadding="0" cellspacing="0" align="left" class="es-left" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
+                        <tr>
+                          <td align="center" style="padding:0;Margin:0;width:432px">
+                          <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                            <tr>
+                              <td align="left" class="es-text-4713" style="padding:0;Margin:0"><p class="es-text-mobile-size-10 es-override-size" style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><strong>{{ track.track_title }}</strong></p></td>
+                            </tr>
+                            <tr>
+                              <td align="left" class="es-text-1126" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18.2px !important;letter-spacing:0;color:#333333;font-size:14px"><span class="es-text-mobile-size-10 es-override-size">{{ track.track_artist }}</span><br class="es-text-mobile-size-10 es-override-size"><span class="es-text-mobile-size-10 es-override-size">{{ track.track_genre }}​</span></p></td>
+                            </tr>
+                          </table></td>
+                        </tr>
+                      </table></td>
+                      <td class="es-m-w0" style="padding:0;Margin:0;width:20px"></td>
+                      <td class="es-m-w0" style="padding:0;Margin:0;width:20px"></td>
+                      <td valign="top" class="esdev-mso-td" style="padding:0;Margin:0">
+                      <table cellpadding="0" cellspacing="0" align="right" class="es-right" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
+                        <tr>
+                          <td align="left" style="padding:0;Margin:0;width:30px">
+                          <table cellspacing="0" width="100%" role="presentation" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                            <tr>
+                              <td align="center" class="es-m-p10r es-m-p10l es-m-txt-c es-m-p5b" style="padding:0;Margin:0;padding-right:30px;padding-left:30px"><span class="es-button-border es-m-il" style="border-style:solid;border-color:#2CB543;background:transparent;border-width:0px;display:inline-block;border-radius:5px;width:auto"><a target="_blank" href="{{ release_website_url }}/downloads/" class="es-button es-button-7434" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#333333;font-size:12px;padding:5px;display:inline-block;background:transparent;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:14.4px;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid transparent">Listen</a></span></td>
+                            </tr>
+                            <tr>
+                              <td align="center" class="es-m-txt-c es-m-p10" style="padding:0;Margin:0;padding-right:30px;padding-left:30px"><span class="es-button-border es-m-il" style="border-style:solid;border-color:#2CB543;background:transparent;border-width:0px;display:inline-block;border-radius:5px;width:auto"><a href="{{ release_website_url }}/downloads/" target="_blank" class="es-button es-button-8091" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#333333;font-size:12px;padding:5px;display:inline-block;background:transparent;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:14.4px;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid transparent">Download</a></span></td>
+                            </tr>
+                            <tr>
+                              <td align="center" class="es-m-p10r es-m-p10l es-m-txt-c es-m-p5t es-m-p5b" style="padding:0;Margin:0;padding-right:30px;padding-left:30px"><span class="es-button-border es-m-il" style="border-style:solid;border-color:#2CB543;background:transparent;border-width:0px;display:inline-block;border-radius:5px;width:auto"><a target="_blank" href="" class="es-button es-button-9015" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#cb33f0;font-size:12px;padding:5px;display:inline-block;background:transparent;border-radius:5px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:14.4px;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid transparent">Rate</a></span></td>
+                            </tr>
+                          </table></td>
+                        </tr>
+                      </table></td>
+                    </tr>
+                  </table></td>
+                </tr>
+              {% endfor %}
+             <tr>
+              <td align="left" style="Margin:0;padding-top:15px;padding-right:20px;padding-left:20px;padding-bottom:10px">
+               <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:560px">
+                   <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Thanks for your support! {{ label.label_name }} <a target="_blank" href="" style="mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">{{ label.label_email }}</a></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+           </table></td>
+         </tr>
+       </table>
+       <table cellpadding="0" cellspacing="0" align="center" class="es-footer" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%;table-layout:fixed !important;background-color:transparent;background-repeat:repeat;background-position:center top">
+         <tr>
+          <td align="center" style="padding:0;Margin:0">
+           <table align="center" cellpadding="0" cellspacing="0" class="es-footer-body" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;width:600px" role="none">
+             <tr>
+              <td align="left" bgcolor="#333333" style="Margin:0;padding-right:20px;padding-left:20px;padding-bottom:20px;padding-top:20px;background-color:#333333">
+               <table cellpadding="0" cellspacing="0" width="100%" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:560px">
+                   <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-top:15px;padding-bottom:15px;font-size:0">
+                       <table cellpadding="0" cellspacing="0" class="es-table-not-adapt es-social" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                         <tr>
+                          <td align="center" valign="top" style="padding:0;Margin:0;padding-right:40px"><img title="Instagram" src="https://foqsehw.stripocdn.email/content/assets/img/social-icons/logo-gray/instagram-logo-gray.png" alt="Inst" width="32" height="32" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none"></td>
+                          <td valign="top" align="center" style="padding:0;Margin:0"><img src="https://foqsehw.stripocdn.email/content/assets/img/social-icons/logo-gray/soundcloud-logo-gray.png" alt="Sc" width="32" title="Soundcloud" height="32" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none"></td>
+                         </tr>
+                       </table></td>
+                     </tr>
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-bottom:35px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;letter-spacing:0;color:#cccccc;font-size:12px">{{ label.label_name }}</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:18px;letter-spacing:0;color:#cccccc;font-size:12px">{{ label.legal_address }}, {{ label.legal_city }}, {{ label.legal_country }}</p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+             <tr>
+              <td align="left" bgcolor="#000000" style="Margin:0;padding-right:20px;padding-left:20px;padding-bottom:20px;padding-top:20px;background-color:#000000">
+               <table cellspacing="0" width="100%" cellpadding="0" role="none" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                 <tr>
+                  <td align="left" style="padding:0;Margin:0;width:560px">
+                   <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                     <tr>
+                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:12px !important;letter-spacing:0;color:#ffffff;font-size:12px">This promotion was created with <a target="_blank" style="mso-line-height-rule:exactly;text-decoration:underline;color:#ffe599;font-size:12px;line-height:12px !important" href="">Label Promotion Manager</a></p></td>
+                     </tr>
+                   </table></td>
+                 </tr>
+               </table></td>
+             </tr>
+           </table></td>
+         </tr>
+       </table></td>
+     </tr>
+   </table>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="telephone=no" name="format-detection">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "website/styles/styles.css" %}">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <section class="layout">
+        <div class="banner">
+            <img src="{{ banner }}">
+        </div>
+        <div class="content">
+            <div class="navbar">
+                <div class="items-navbar">
+                    <div class="item">
+                        <a href="#" class="active">Downloads</a>
+                    </div>
+                    <div class="item">
+                        <a href="#">Comments</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main">
+                <section class="info">
+                    <div class="title">
+                        <h2>{{ title }} {{ type }}</h2>
+                        <h3>by {{ artist_name }}</h3>
+                    </div>
+                    <div class="music">
+                        <a href="{{ download_all_url }}" download>Download {{ type }}</a>
+                        <section class="track-list">
+                            {% for track in tracks %}
+                                <div class="track">
+                                    <button class="play-btn" data-file="{{ track.track_file.url }}">▶</button>
+                                    <a href="{{ track.download_url }}" class="download-link" data-artist="{{ track.track_artist }}" data-title="{{ track.track_title }}">
+                                        <button class="get-btn" type="button">GET</button>
+                                    </a>
+                                    <span class="track-number">{{ forloop.counter }}.</span>
+                                    <span class="track-title">{{ track.track_artist }} - {{ track.track_title }}</span>
+                                    <span class="track-duration">06:36</span>
+                                </div>
+                            {% endfor %}
+                        </section>
+                    </div>
+                    <div class="description">
+                        <div class="text-block">
+                            <span class="text">
+                                {{ description }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="label-info">
+                        <h3>{{ label.label_name }}</h3>
+                        <span>{{ label.label_email }}</span>
+                        <span>
+                            <a href="{{ link_1 }}">{{ link_1_name }}</a>
+                            -
+                            <a href="{{ link_2 }}">{{ link_2_name }}</a>
+                        </span>
+                    </div>
+                </section>
+                <section class="artwork">
+                    <div class="img-block">
+                        <img src="{{ artwork }}">
+                    </div>
+                </section>
+            </div>
+
+            <div class="footer">
+                <div class="items-footer">
+                    <div class="item-footer">
+                        <h2 href="#">Promotion created using LabelPulse ®</h2>
+                    </div>
+                    <div class="item-footer">
+                        <span>We'd love to receive feedback :&#41; </span><a href="#">feedback@label-pulse.comt</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="{% static "website/scripts/play.js" %}" async defer></script>
+    <script src="{% static "website/scripts/download.js" %}" async defer></script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "campaigns/styles/buttons_styles.css" %}">
+    <link rel="stylesheet" href="/cs.labelpulse.nyc3.digitaloceanspaces.com/static/vendor/fontawesome-free/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static "campaigns/scripts/send_test_email.js" %}"></script>
+</head>
+
+<button type="button" class="send-button" data-url="{{ url }}">
+    <i class="fas solid fa-vial" style="padding-right: 10px;"></i>
+    SEND TEST
+</button>

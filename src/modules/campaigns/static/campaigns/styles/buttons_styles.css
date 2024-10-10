@@ -1,0 +1,29 @@
+.send-button {
+    border: none;
+    border-radius: .25em;
+    padding: 7px 15px 7px 15px;
+    cursor: pointer;
+    background-color: rgb(60, 60, 60);
+    color: lightgray;
+    transition: color 0.15s, background-color 0.15s;
+}
+
+.send-button:hover {
+    background-color: lightgray;
+    color: rgb(60, 60, 60);
+}
+
+.template-button {
+    border: none;
+    border-radius: .25em;
+    padding: 7px 15px 7px 15px;
+    cursor: pointer;
+    background-color: rgb(60, 60, 60);
+    color: lightgray;
+    transition: color 0.15s, background-color 0.15s;
+}
+
+.template-button:hover {
+    background-color: lightgray;
+    color: rgb(60, 60, 60);
+}
