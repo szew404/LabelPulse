@@ -1,0 +1,59 @@
+name: Deploy Django App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: ${{ secrets.USER_DB }}
+          POSTGRES_PASSWORD: ${{ secrets.PASS_DB }}
+          POSTGRES_DB: ${{ secrets.NAME_DB }}
+        ports:
+          - "5432:5432"
+        options: >-
+          --health-cmd="pg_isready"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+      redis:
+        image: redis:latest
+        ports:
+          - "6379:6379"
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Migrations
+      run: |
+        python manage.py migrate
+
+    - name: Run tests
+      run: |
+        python manage.py test
+
+    - name: Deploy to DigitalOcean Droplet
+      env:
+        DO_API_TOKEN: ${{ secrets.DO_API_TOKEN }}
+      run: |
+        scp -r . root@137.184.246.227:/var/www/labelpulse
+        ssh root@137.184.246.227 'cd /var/www/labelpulse && docker-compose up -d --build'
