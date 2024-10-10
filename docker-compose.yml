@@ -25,7 +25,7 @@ services:
     expose:
       - "8000"
     depends_on:
-      - db
+      - postgres
       - redis
 
   celery:
@@ -35,7 +35,7 @@ services:
       - .:/app
     depends_on:
       - redis
-      - db
+      - postgres
 
   celery-beat:
     build: .
@@ -44,7 +44,7 @@ services:
       - .:/app
     depends_on:
       - redis
-      - db
+      - postgres
 
   nginx:
     image: nginx:alpine
