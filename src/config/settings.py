@@ -254,7 +254,7 @@ DATABASES = {
         "NAME": env_config.get("NAME_DB"),
         "USER": env_config.get("USER_DB"),
         "PASSWORD": env_config.get("PASS_DB"),
-        "HOST": "postgres",
+        "HOST": env_config.get("HOST_DB"),
         "PORT": "5432",
     }
 }
