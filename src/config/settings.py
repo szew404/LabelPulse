@@ -16,7 +16,7 @@ from decouple import Config, RepositoryEnv
 import os
 
 # Env config
-DOTENV_FILE = ".env"
+DOTENV_FILE = "config/.env"
 env_config = Config(RepositoryEnv(DOTENV_FILE))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
