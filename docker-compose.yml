@@ -19,7 +19,7 @@ services:
 
   web:
     build: .
-    command: gunicorn --workers 3 --bind 0.0.0.0:8000 src.config.wsgi:application
+    command: sh -c 'dockerize -wait tcp://postgres:5432 -timeout 60s gunicorn --workers 3 --bind 0.0.0.0:8000 src.config.wsgi:application'
     volumes:
       - .:/app
       - ./src/config/.env:/app/src/config/.env
@@ -28,8 +28,6 @@ services:
     depends_on:
       - postgres
       - redis
-    networks:
-      - app-network
 
   nginx:
     image: nginx:alpine
