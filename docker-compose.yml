@@ -28,24 +28,6 @@ services:
       - postgres
       - redis
 
-  celery:
-    build: .
-    command: celery -A services worker -l info
-    volumes:
-      - .:/app
-    depends_on:
-      - redis
-      - postgres
-
-  celery-beat:
-    build: .
-    command: celery -A services beat -l info
-    volumes:
-      - .:/app
-    depends_on:
-      - redis
-      - postgres
-
   nginx:
     image: nginx:alpine
     volumes:
