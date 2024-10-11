@@ -28,6 +28,8 @@ services:
     depends_on:
       - postgres
       - redis
+    networks:
+      - app-network
 
   nginx:
     image: nginx:alpine
