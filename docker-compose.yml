@@ -30,7 +30,7 @@ services:
 
   celery:
     build: .
-    command: celery -A modules.services worker -l info
+    command: celery -A services worker -l info
     volumes:
       - .:/app
     depends_on:
@@ -39,7 +39,7 @@ services:
 
   celery-beat:
     build: .
-    command: celery -A modules.services beat -l info
+    command: celery -A services beat -l info
     volumes:
       - .:/app
     depends_on:
