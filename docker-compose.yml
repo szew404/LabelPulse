@@ -22,7 +22,7 @@ services:
     command: gunicorn --workers 3 --bind 0.0.0.0:8000 src.config.wsgi:application
     volumes:
       - .:/app
-      - ./src/config/.env:/app/.env
+      - ./src/config/.env:/app/src/config/.env
     expose:
       - "8000"
     depends_on:
