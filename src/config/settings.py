@@ -227,7 +227,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = ["https://label-pulse.com/", "https://www.label-pulse.com/"]
+CSRF_TRUSTED_ORIGINS = ["https://label-pulse.com", "https://www.label-pulse.com"]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
