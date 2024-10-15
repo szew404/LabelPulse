@@ -6,6 +6,8 @@ from .storage_backends import save_template
 
 def create_template(instance: object) -> str:
 
+    base_url = "http://label-pulse.com/"
+
     context = {
         "title": instance.release.release_title,
         "type": instance.release.release_type,
@@ -15,7 +17,7 @@ def create_template(instance: object) -> str:
         "artwork": instance.release.release_artwork.url,
         "tracks": instance.release.get_tracks_listed,
         "label": instance.label,
-        "release_website_url": f"website/{instance.release_website_url}",
+        "release_website_url": f"{base_url}website/{instance.release_website_url}",
     }
 
     html_content = render_to_string("campaigns/promo_template.html", context)
