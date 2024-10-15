@@ -235,6 +235,10 @@ CORS_ALLOW_HEADERS = (
     "Access-Control-Allow-Origin",
 )
 
+CORS_EXPOSE_HEADERS = [
+    "Access-Control-Allow-Origin",
+]
+
 CSRF_TRUSTED_ORIGINS = [
     "https://label-pulse.com",
     "https://www.label-pulse.com",
