@@ -222,11 +222,13 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
+    "http://web:8000",
     "https://label-pulse.com",
     "https://cloud.label-pulse.com",
 ]
 
 CORS_ORIGIN_WHITELIST = (
+    "http://web:8000",
     "https://label-pulse.com",
     "https://cloud.label-pulse.com",
 )
