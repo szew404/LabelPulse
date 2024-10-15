@@ -5,7 +5,6 @@ from django.template.loader import render_to_string
 
 from .models import Campaign
 from modules.labels.models import Release, Label
-from modules.services.create_template import create_template
 
 
 @admin.register(Campaign)
