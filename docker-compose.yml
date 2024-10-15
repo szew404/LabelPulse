@@ -45,7 +45,7 @@ services:
       - redis
       - postgres
     environment:
-      - CELERY_BROKER_URL=${CELERY_BROKER_UR}
+      - CELERY_BROKER_URL=${CELERY_BROKER_URL}
       - CELERY_RESULT_BACKEND=${CELERY_RESULT_BACKEND}
 
   celery-beat:
