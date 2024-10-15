@@ -8,7 +8,7 @@ from modules.services.create_template import create_template
 from modules.labels.models import Release, Label
 from modules.services.storage_backends import MediaStorage
 
-from utils import (
+from src.utils import (
     validate_upload,
     upload_path,
 )
