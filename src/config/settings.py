@@ -221,13 +221,15 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://label-pulse.com",
-]
+CORS_ALLOWED_ORIGINS = ["https://label-pulse.com", "https://cloud.label-pulse.com"]
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = ["https://label-pulse.com", "https://www.label-pulse.com"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://label-pulse.com",
+    "https://www.label-pulse.com",
+    "https://cloud.label-pulse.com",
+]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
