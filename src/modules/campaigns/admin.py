@@ -51,6 +51,9 @@ class CampaignAdmin(admin.ModelAdmin):
     # Model config
     def get_queryset(self, request):
 
+        if self.fields is None:
+            self.fields = []
+
         if (
             request.user.is_superuser
             and (
