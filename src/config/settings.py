@@ -183,7 +183,7 @@ CELERY_RESULT_SERIALIZER = "json"
 CELERY_BEAT_SCHEDULE = {
     "send-campaign-emails-everyday": {
         "task": "modules.services.tasks.send_campaign_emails",
-        "schedule": 60.0,
+        "schedule": 3600.0,
     },
 }
 

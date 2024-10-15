@@ -48,7 +48,7 @@ class Campaign(models.Model):
     sent_date = models.DateTimeField(
         blank=False,
         null=False,
-        help_text="Date you want your promotion to be sent.",
+        help_text="Date you want your promotion to be sent. Set a time without minutes, e.g. 04:00:00 as the system updates every 60 minutes.",
     )
     recipients = models.TextField(
         "Recipients' e-mail addresses",
