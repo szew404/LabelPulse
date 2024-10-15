@@ -33,6 +33,33 @@ services:
       - postgres
       - redis
 
+  celery:
+    build: .
+    command: celery -A src.modules.services.celery worker --loglevel=info
+    volumes:
+      - .:/app
+      - ./src/config/.env:/app/src/config/.env
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - postgres
+    environment:
+      - CELERY_BROKER_URL=${CELERY_BROKER_UR}
+      - CELERY_RESULT_BACKEND=${CELERY_RESULT_BACKEND}
+
+  celery-beat:
+    build: .
+    command: celery -A src.modules.services.celery beat --loglevel=info
+    volumes:
+      - .:/app
+      - ./src/config/.env:/app/src/config/.env
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - postgres
+
   nginx:
     image: nginx:alpine
     volumes:
