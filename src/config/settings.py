@@ -225,6 +225,16 @@ CORS_ALLOWED_ORIGINS = ["https://label-pulse.com", "https://cloud.label-pulse.co
 
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "Access-Control-Allow-Origin",
+)
+
 CSRF_TRUSTED_ORIGINS = [
     "https://label-pulse.com",
     "https://www.label-pulse.com",
