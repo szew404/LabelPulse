@@ -211,9 +211,9 @@ SPECTACULAR_SETTINGS = {
 
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -221,19 +221,21 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CORS_ALLOWED_ORIGINS = ["https://label-pulse.com", "https://cloud.label-pulse.com"]
+CORS_ALLOWED_ORIGINS = [
+    "https://label-pulse.com",
+    "https://cloud.label-pulse.com",
+]
+
+CORS_ORIGIN_WHITELIST = (
+    "https://label-pulse.com",
+    "https://cloud.label-pulse.com",
+)
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOW_HEADERS = (
-    "accept",
-    "authorization",
-    "content-type",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-    "Access-Control-Allow-Origin",
-)
+CORS_ALLOW_HEADERS = [
+    "*",
+]
 
 CORS_EXPOSE_HEADERS = [
     "Access-Control-Allow-Origin",
