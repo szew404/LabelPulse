@@ -50,8 +50,8 @@ class CampaignAdmin(admin.ModelAdmin):
     # Model config
     def get_queryset(self, request):
 
-        if self.fields is None:
-            self.fields = []
+        if self.fieldsets is None:
+            self.fieldsets = []
 
         mngmt = (
             "Management",
@@ -64,8 +64,8 @@ class CampaignAdmin(admin.ModelAdmin):
             },
         )
 
-        if request.user.is_superuser and mngmt not in self.fields:
-            self.fields.append(mngmt)
+        if request.user.is_superuser and mngmt not in self.fieldsets:
+            self.fieldsets.append(mngmt)
 
         qs = super().get_queryset(request)
         if request.user.is_superuser:
