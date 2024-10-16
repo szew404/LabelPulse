@@ -45,7 +45,7 @@ jobs:
 
     - name: Run Migrations
       run: |
-        python src/manage.py migrate
+        python src/bin/manage.py migrate
 
     - name: Deploy to DigitalOcean Droplet
       env:
