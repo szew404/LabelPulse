@@ -43,16 +43,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Wait for PostgreSQL to be ready
-      run: |
-        for i in {1..30}; do
-          if pg_isready -h postgres -U ${{ secrets.USER_DB }}; then
-            break
-          fi
-          echo "Waiting for PostgreSQL..."
-          sleep 2
-        done
-
     - name: Run Migrations
       run: |
         python src/bin/manage.py migrate
