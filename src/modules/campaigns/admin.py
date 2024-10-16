@@ -53,22 +53,19 @@ class CampaignAdmin(admin.ModelAdmin):
         if self.fields is None:
             self.fields = []
 
-        if (
-            request.user.is_superuser
-            and (
-                "approved",
-                "comments",
-                "release_website_url",
-            )
-            not in self.fields
-        ):
-            self.fields.append(
-                (
+        mngmt = (
+            "Management",
+            {
+                "fields": (
                     "approved",
                     "comments",
                     "release_website_url",
-                )
-            )
+                ),
+            },
+        )
+
+        if request.user.is_superuser and mngmt not in self.fields:
+            self.fields.append(mngmt)
 
         qs = super().get_queryset(request)
         if request.user.is_superuser:
