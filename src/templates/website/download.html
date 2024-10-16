@@ -57,6 +57,10 @@
                                     <span class="track-number">{{ forloop.counter }}.</span>
                                     <span class="track-title">{{ track.track_artist }} - {{ track.track_title }}</span>
                                     <span class="track-duration">06:36</span>
+
+                                    <div class="progress-container">
+                                        <div class="progress-bar" id="progress-bar-{{ forloop.counter }}"></div>
+                                    </div>
                                 </div>
                             {% endfor %}
                         </section>
