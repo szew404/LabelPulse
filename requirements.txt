@@ -26,7 +26,6 @@ pillow==10.4.0
 prompt_toolkit==3.0.48
 psycopg2-binary==2.9.9
 python-dateutil==2.9.0.post0
-python-decouple==3.8
 PyYAML==6.0.2
 redis==5.1.1
 referencing==0.35.1
@@ -43,3 +42,4 @@ wcwidth==0.2.13
 gunicorn>=20.0
 django-cors-headers==4.4.0
 utils==1.0.2
+django-environ==0.11.2

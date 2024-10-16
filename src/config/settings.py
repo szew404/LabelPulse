@@ -11,16 +11,13 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import Config, RepositoryEnv
+import environ
 
 import os
 
-# Env config
-DOTENV_FILE = ".env"
-try:  # required to github actions
-    env_config = Config(RepositoryEnv(DOTENV_FILE))
-except:
-    pass
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env_config.get("SECRET_KEY")
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(env_config.get("DEBUG", default=0))
+DEBUG = bool(env("DEBUG", default=0))
 
-ALLOWED_HOSTS = (env_config.get("DJANGO_ALLOWED_HOSTS", default="")).split(" ")
+ALLOWED_HOSTS = (env("DJANGO_ALLOWED_HOSTS", default="")).split(" ")
 
 
 # Application definition
@@ -181,10 +178,8 @@ LOGGING = {
 }"""
 
 # CELERY config
-CELERY_BROKER_URL = env_config.get("CELERY_BROKER_URL", "redis://localhost:6379/0")
-CELERY_RESULT_BACKEND = env_config.get(
-    "CELERY_RESULT_BACKEND", "redis://localhost:6379/0"
-)
+CELERY_BROKER_URL = env("CELERY_BROKER_URL", "redis://localhost:6379/0")
+CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND", "redis://localhost:6379/0")
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
@@ -203,8 +198,8 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = False
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = env_config.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env_config.get("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 # Docs config
 REST_FRAMEWORK = {
@@ -288,9 +283,9 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": env_config.get("NAME_DB"),
-        "USER": env_config.get("USER_DB"),
-        "PASSWORD": env_config.get("PASS_DB"),
+        "NAME": env("NAME_DB"),
+        "USER": env("USER_DB"),
+        "PASSWORD": env("PASS_DB"),
         "HOST": "postgres",
         "PORT": "5432",
     }
@@ -329,16 +324,16 @@ USE_TZ = True
 
 
 # Cloud config
-USE_SPACES = env_config.get("USE_SPACES") == "TRUE"
+USE_SPACES = env("USE_SPACES") == "TRUE"
 
 if USE_SPACES:
     # Cloud settings
-    AWS_ACCESS_KEY_ID = env_config.get("AWS_ACCESS_KEY_ID")
-    AWS_SECRET_ACCESS_KEY = env_config.get("AWS_SECRET_ACCESS_KEY")
-    AWS_STORAGE_BUCKET_NAME = env_config.get("AWS_STORAGE_BUCKET_NAME")
+    AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
     AWS_DEFAULT_ACL = "public-read"
-    AWS_S3_REGION_NAME = env_config.get("AWS_S3_REGION_NAME")
-    AWS_S3_CUSTOM_DOMAIN = env_config.get("AWS_S3_CUSTOM_DOMAIN")
+    AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME")
+    AWS_S3_CUSTOM_DOMAIN = env("AWS_S3_CUSTOM_DOMAIN")
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     # static settings
     AWS_LOCATION = "static"
