@@ -12,8 +12,6 @@ jobs:
     services:
       postgres:
         image: postgres:13
-        volumes:
-          - postgres_data:/var/lib/postgresql/data/
         env:
           POSTGRES_USER: ${{ secrets.USER_DB }}
           POSTGRES_PASSWORD: ${{ secrets.PASS_DB }}
@@ -79,6 +77,3 @@ jobs:
       run: |
         scp -r . root@${{ secrets.SERVER_IP }}:/var/www/labelpulse
         ssh root@${{ secrets.SERVER_IP }} 'cd /var/www/labelpulse && docker-compose up -d --build'
-
-    volumes:
-      postgres_data:
