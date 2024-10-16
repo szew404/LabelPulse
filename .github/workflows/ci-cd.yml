@@ -64,9 +64,18 @@ jobs:
         EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
         DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
 
+    - name: Add the private SSH key to the ssh-agent
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+        mkdir -p ~/.ssh
+        ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        ssh-add - <<< "${{ secrets.PRIVATE_KEY }}
+
     - name: Deploy to DigitalOcean Droplet
       env:
-        DO_API_TOKEN: ${{ secrets.DO_API_TOKEN }}
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
         scp -o StrictHostKeyChecking=no -r . root@${{ secrets.SERVER_IP }}:/var/www/labelpulse
         ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_IP }} << 'ENDSSH'
