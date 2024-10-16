@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Internal
-    "utils",
+    "modules.utils",
     "modules.website",
     "modules.services",
     "modules.labels",
