@@ -17,7 +17,10 @@ import os
 
 # Env config
 DOTENV_FILE = ".env"
-env_config = Config(RepositoryEnv(DOTENV_FILE))
+try:  # required to github actions
+    env_config = Config(RepositoryEnv(DOTENV_FILE))
+except:
+    pass
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
