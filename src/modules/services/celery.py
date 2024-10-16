@@ -10,7 +10,7 @@ app = Celery("services")
 
 app.config_from_object("django.conf:settings", namespace="CELERY")
 
-app.autodiscover_tasks(["services"])
+app.autodiscover_tasks(["modules.services"])
 
 
 @app.task(bind=True)
