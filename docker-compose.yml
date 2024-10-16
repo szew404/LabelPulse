@@ -47,6 +47,7 @@ services:
     environment:
       - CELERY_BROKER_URL=${CELERY_BROKER_URL}
       - CELERY_RESULT_BACKEND=${CELERY_RESULT_BACKEND}
+      - PYTHONPATH=/app/src
 
   celery-beat:
     build: .
