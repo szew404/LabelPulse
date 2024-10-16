@@ -68,5 +68,10 @@ jobs:
       env:
         DO_API_TOKEN: ${{ secrets.DO_API_TOKEN }}
       run: |
-        scp -r . root@${{ secrets.SERVER_IP }}:/var/www/labelpulse
-        ssh root@${{ secrets.SERVER_IP }} 'cd /var/www/labelpulse && docker-compose up -d --build'
+        scp -o StrictHostKeyChecking=no -r . root@${{ secrets.SERVER_IP }}:/var/www/labelpulse
+        ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_IP }} << 'ENDSSH'
+          cd /var/www/labelpulse
+          docker-compose down
+          git pull
+          docker-compose up --build -d
+        ENDSSH
