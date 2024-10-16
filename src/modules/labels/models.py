@@ -6,7 +6,7 @@ from django.dispatch import receiver
 
 from modules.services.storage_backends import MediaStorage
 
-from src.utils import (
+from utils import (
     GENRES_CHOICES,
     STYLES_CHOICES,
     validate_upload,
