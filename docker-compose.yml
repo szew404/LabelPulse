@@ -60,6 +60,8 @@ services:
     depends_on:
       - redis
       - postgres
+    environment:
+      - PYTHONPATH=/app/src
 
   nginx:
     image: nginx:alpine
