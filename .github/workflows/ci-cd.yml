@@ -12,12 +12,12 @@ jobs:
     services:
       postgres:
         image: postgres:13
+        volumes:
+          - postgres_data:/var/lib/postgresql/data/
         env:
           POSTGRES_USER: ${{ secrets.USER_DB }}
           POSTGRES_PASSWORD: ${{ secrets.PASS_DB }}
           POSTGRES_DB: ${{ secrets.NAME_DB }}
-        ports:
-          - "5432:5432"
         options: >-
           --health-cmd="pg_isready"
           --health-interval=10s
@@ -42,6 +42,16 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h postgres -U ${{ secrets.USER_DB }}; then
+            break
+          fi
+          echo "Waiting for PostgreSQL..."
+          sleep 2
+        done
 
     - name: Run Migrations
       run: |
@@ -69,3 +79,6 @@ jobs:
       run: |
         scp -r . root@${{ secrets.SERVER_IP }}:/var/www/labelpulse
         ssh root@${{ secrets.SERVER_IP }} 'cd /var/www/labelpulse && docker-compose up -d --build'
+
+    volumes:
+      postgres_data:
