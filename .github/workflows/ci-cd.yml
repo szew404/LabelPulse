@@ -47,9 +47,9 @@ jobs:
       run: |
         python src/bin/manage.py migrate
       env:
-        NAME: ${{ secrets.NAME_DB }}
-        USER: ${{ secrets.USER_DB }}
-        PASSWORD: ${{ secrets.PASS_DB }}
+        NAME_DB: ${{ secrets.NAME_DB }}
+        USER_DB: ${{ secrets.USER_DB }}
+        PASS_DB: ${{ secrets.PASS_DB }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         USE_SPACES: ${{ secrets.USE_SPACES }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
