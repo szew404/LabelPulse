@@ -16,7 +16,12 @@ import environ
 import os
 
 # Initialise environment variables
-env = environ.Env()
+env = environ.Env(
+    DEBUG=(int, 0),
+    ALLOWED_HOSTS=(str, ""),
+    CELERY_BROKER_URL=("", "redis://localhost:6379/0"),
+    CELERY_RESULT_BACKEND=("", "redis://localhost:6379/0"),
+)
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,9 +34,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(env("DEBUG", default=0))
+DEBUG = bool(env("DEBUG"))
 
-ALLOWED_HOSTS = (env("DJANGO_ALLOWED_HOSTS", default="")).split(" ")
+ALLOWED_HOSTS = (env("DJANGO_ALLOWED_HOSTS")).split(" ")
 
 
 # Application definition
@@ -178,8 +183,8 @@ LOGGING = {
 }"""
 
 # CELERY config
-CELERY_BROKER_URL = env("CELERY_BROKER_URL", "redis://localhost:6379/0")
-CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND", "redis://localhost:6379/0")
+CELERY_BROKER_URL = env("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND")
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
