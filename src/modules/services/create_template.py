@@ -1,5 +1,4 @@
 from django.template.loader import render_to_string
-from django.conf import settings
 from django.utils.text import slugify
 from .storage_backends import save_template
 

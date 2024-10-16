@@ -4,13 +4,11 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./src/config/.env
+      - .env
     environment:
       POSTGRES_DB: ${NAME_DB}
       POSTGRES_USER: ${USER_DB}
       POSTGRES_PASSWORD: ${PASS_DB}
-    networks:
-      - app-network
 
   redis:
     image: "redis:alpine"
@@ -22,51 +20,70 @@ services:
     command: gunicorn --workers 3 --bind 0.0.0.0:8000 src.config.wsgi:application
     volumes:
       - .:/app
+      - ./src/config/.env:/app/src/config/.env
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${NAME_DB}
+      POSTGRES_USER: ${USER_DB}
+      POSTGRES_PASSWORD: ${PASS_DB}
     expose:
       - "8000"
     depends_on:
-      - db
+      - postgres
       - redis
 
   celery:
     build: .
-    command: celery -A src worker -l info
+    command: celery -A src.modules.services.celery worker --loglevel=info
     volumes:
       - .:/app
+      - ./src/config/.env:/app/src/config/.env
+    env_file:
+      - .env
     depends_on:
       - redis
-      - db
+      - postgres
+    environment:
+      - CELERY_BROKER_URL=${CELERY_BROKER_URL}
+      - CELERY_RESULT_BACKEND=${CELERY_RESULT_BACKEND}
+      - PYTHONPATH=/app/src
 
   celery-beat:
     build: .
-    command: celery -A src beat -l info
+    command: celery -A src.modules.services.celery beat --loglevel=info
     volumes:
       - .:/app
+      - ./src/config/.env:/app/src/config/.env
+    env_file:
+      - .env
     depends_on:
       - redis
-      - db
+      - postgres
+    environment:
+      - PYTHONPATH=/app/src
 
   nginx:
     image: nginx:alpine
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./data/nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     ports:
       - "80:80"
       - "443:443"
     depends_on:
       - web
 
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
   certbot:
     image: certbot/certbot
     volumes:
-      - ./letsencrypt:/etc/letsencrypt
-      - ./letsencrypt/lib:/var/lib/letsencrypt
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 
 volumes:
   postgres_data:
-
-networks:
-  app-network:
-    driver: bridge

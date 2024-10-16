@@ -16,7 +16,7 @@ from decouple import Config, RepositoryEnv
 import os
 
 # Env config
-DOTENV_FILE = "config/.env"
+DOTENV_FILE = ".env"
 env_config = Config(RepositoryEnv(DOTENV_FILE))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env_config.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(env_config.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = (env_config.get("DJANGO_ALLOWED_HOSTS", default="")).split(" ")
 
 
 # Application definition
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "drf_spectacular",
     "storages",
+    "corsheaders",
 ]
 
 # Jazzmin theme config
@@ -68,6 +69,12 @@ JAZZMIN_SETTINGS = {
     "site_brand": "LabelPulse",
     # Welcome text on the login screen
     "welcome_sign": "Welcome to LabelPulse",
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "admin/img/labelpulse-sitelogo.png",
+    # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
+    "login_logo": "admin/img/labelpulse-loginlogo.png",
+    # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
+    "site_icon": "admin/img/labelpulse-favicon.png",
     # Copyright on the footer
     "copyright": "LabelPulse",
     # Links to put along the top menu
@@ -115,29 +122,29 @@ JAZZMIN_SETTINGS = {
         "labels.track": "fas fa-music",
         "campaigns.campaign": "fas fa-bullhorn",
     },
-    # "show_ui_builder": True,
+    "show_ui_builder": True,
 }
 
 JAZZMIN_UI_TWEAKS = {
-    "footer_small_text": False,
+    "footer_small_text": True,
     "body_small_text": True,
-    "brand_small_text": False,
+    "brand_small_text": True,
     "brand_colour": "navbar-dark",
-    "accent": "accent-teal",
-    "navbar": "navbar-gray-dark navbar-dark",
+    "accent": "accent-navy",
+    "navbar": "navbar-white navbar-light",
     "no_navbar_border": True,
     "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-lime",
+    "sidebar": "sidebar-dark-indigo",
     "sidebar_nav_small_text": False,
     "sidebar_disable_expand": True,
     "sidebar_nav_child_indent": False,
     "sidebar_nav_compact_style": False,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": True,
-    "theme": "darkly",
+    "theme": "pulse",
     "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-primary",
@@ -182,7 +189,7 @@ CELERY_RESULT_SERIALIZER = "json"
 CELERY_BEAT_SCHEDULE = {
     "send-campaign-emails-everyday": {
         "task": "modules.services.tasks.send_campaign_emails",
-        "schedule": 60.0,
+        "schedule": 3600.0,
     },
 }
 
@@ -212,11 +219,40 @@ SPECTACULAR_SETTINGS = {
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://web:8000",
+    "https://label-pulse.com",
+    "https://cloud.label-pulse.com",
+]
+
+CORS_ORIGIN_WHITELIST = (
+    "http://web:8000",
+    "https://label-pulse.com",
+    "https://cloud.label-pulse.com",
+)
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    "*",
+]
+
+CORS_EXPOSE_HEADERS = [
+    "Access-Control-Allow-Origin",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://label-pulse.com",
+    "https://www.label-pulse.com",
+    "https://cloud.label-pulse.com",
 ]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
@@ -252,7 +288,7 @@ DATABASES = {
         "NAME": env_config.get("NAME_DB"),
         "USER": env_config.get("USER_DB"),
         "PASSWORD": env_config.get("PASS_DB"),
-        "HOST": "localhost",
+        "HOST": "postgres",
         "PORT": "5432",
     }
 }
@@ -303,7 +339,7 @@ if USE_SPACES:
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     # static settings
     AWS_LOCATION = "static"
-    STATIC_URL = f"{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
     STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
     # public media settings
     PUBLIC_MEDIA_LOCATION = "media"
