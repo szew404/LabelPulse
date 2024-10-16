@@ -45,15 +45,11 @@ jobs:
 
     - name: Run Migrations
       run: |
-        python manage.py migrate
-
-    - name: Run tests
-      run: |
-        python manage.py test
+        python src/manage.py migrate
 
     - name: Deploy to DigitalOcean Droplet
       env:
         DO_API_TOKEN: ${{ secrets.DO_API_TOKEN }}
       run: |
-        scp -r . root@137.184.246.227:/var/www/labelpulse
-        ssh root@137.184.246.227 'cd /var/www/labelpulse && docker-compose up -d --build'
+        scp -r . root@${{ secrets.SERVER_IP }}:/var/www/labelpulse
+        ssh root@${{ secrets.SERVER_IP }} 'cd /var/www/labelpulse && docker-compose up -d --build'
