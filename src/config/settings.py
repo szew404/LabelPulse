@@ -116,7 +116,7 @@ JAZZMIN_SETTINGS = {
         "labels.track": "fas fa-music",
         "campaigns.campaign": "fas fa-bullhorn",
     },
-    # "show_ui_builder": True,
+    "show_ui_builder": True,
 }
 
 JAZZMIN_UI_TWEAKS = {
@@ -138,7 +138,7 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_compact_style": False,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": True,
-    "theme": "lux",
+    "theme": "pulse",
     "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-primary",
