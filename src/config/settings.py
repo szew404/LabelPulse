@@ -116,11 +116,11 @@ JAZZMIN_SETTINGS = {
         "labels.track": "fas fa-music",
         "campaigns.campaign": "fas fa-bullhorn",
     },
-    # "show_ui_builder": True,
+    "show_ui_builder": True,
 }
 
 JAZZMIN_UI_TWEAKS = {
-    "footer_small_text": False,
+    "footer_small_text": True,
     "body_small_text": True,
     "brand_small_text": False,
     "brand_colour": "navbar-dark",
@@ -138,7 +138,7 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_compact_style": False,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": True,
-    "theme": "darkly",
+    "theme": "lux",
     "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-primary",
