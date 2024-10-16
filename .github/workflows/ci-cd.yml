@@ -46,6 +46,22 @@ jobs:
     - name: Run Migrations
       run: |
         python src/bin/manage.py migrate
+      env:
+        NAME: ${{ secrets.NAME_DB }}
+        USER: ${{ secrets.USER_DB }}
+        PASSWORD: ${{ secrets.PASS_DB }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        USE_SPACES: ${{ secrets.USE_SPACES }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_S3_CUSTOM_DOMAIN: ${{ secrets.AWS_S3_CUSTOM_DOMAIN }}
+        AWS_STORAGE_BUCKET_NAME: ${{ secrets.AWS_STORAGE_BUCKET_NAME }}
+        AWS_S3_REGION_NAME: ${{ secrets.AWS_S3_REGION_NAME }}
+        CELERY_BROKER_URL: ${{ secrets.CELERY_BROKER_URL }}
+        CELERY_RESULT_BACKEND: ${{ secrets.CELERY_RESULT_BACKEND }}
+        EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+        DJANGO_ALLOWED_HOSTS: ${{ secrets.DJANGO_ALLOWED_HOSTS }}
 
     - name: Deploy to DigitalOcean Droplet
       env:
