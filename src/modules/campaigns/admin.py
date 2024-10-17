@@ -22,6 +22,7 @@ class CampaignAdmin(admin.ModelAdmin):
         "get_count_recipients",
         "send_test_email_button",
         "get_template",
+        "get_website",
         "approved",
         "comments",
     ]
@@ -121,3 +122,17 @@ class CampaignAdmin(admin.ModelAdmin):
         return "No Template Available"
 
     get_template.short_description = "Email Promo Template"
+
+    def get_website(self, obj):
+        if obj.release_website_url:
+            website_url = (
+                f"https://label-pulse.com/website/{obj.release_website_url}/downloads/"
+            )
+            button = render_to_string(
+                "campaigns/view_website_button.html", {"website_url": website_url}
+            )
+
+            return format_html(button)
+        return "No Web Available"
+
+    get_website.short_description = "Release Website"
