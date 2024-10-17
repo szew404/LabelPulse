@@ -115,7 +115,7 @@ class CampaignAdmin(admin.ModelAdmin):
             return format_html(button)
         return "No Template Available"
 
-    get_template.short_description = "Email Promo Template"
+    get_template.short_description = "Email Template"
 
     def get_website(self, obj):
         if obj.release_website_url:
