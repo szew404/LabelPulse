@@ -19,7 +19,6 @@ class CampaignAdmin(admin.ModelAdmin):
         "release",
         "sent_date",
         "campaign_sent",
-        "get_count_recipients",
         "send_test_email_button",
         "get_template",
         "get_website",
@@ -93,11 +92,6 @@ class CampaignAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
     # Utils
-    def get_count_recipients(self, obj):
-        return Campaign.count_recipients(obj)
-
-    get_count_recipients.short_description = "Recipients"
-
     def send_test_email_button(self, obj):
         if obj.test_email_address:
             send_url = reverse("send_test_email", args=[obj.id])
