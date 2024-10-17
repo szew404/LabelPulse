@@ -341,7 +341,7 @@ a[x-apple-data-detectors],
     .es-footer,
     .es-header {
         width: 100% !important;
-        max-width: 600px !important
+        max-width: 550px !important
     }
 
     .adapt-img {
@@ -451,6 +451,6 @@ a[x-apple-data-detectors],
 
 @media screen and (max-width:384px) {
     .mail-message-content {
-        width: 414px !important
+        width: 400px !important
     }
 }
