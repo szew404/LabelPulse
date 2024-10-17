@@ -161,7 +161,7 @@ JAZZMIN_UI_TWEAKS = {
     },
 }
 
-"""# Logging
+# Logging
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -175,12 +175,8 @@ LOGGING = {
             "handlers": ["console"],
             "level": "DEBUG",
         },
-        "mailing": {
-            "handlers": ["console"],
-            "level": "DEBUG",
-        },
     },
-}"""
+}
 
 # CELERY config
 CELERY_BROKER_URL = env("CELERY_BROKER_URL")
