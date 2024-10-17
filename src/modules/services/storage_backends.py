@@ -84,6 +84,7 @@ def get_zip_file(path: str, client):
 def create_zip_file(instance):
 
     client = create_session()
+    cloud_url = "https://cloud.label-pulse.com"
 
     zip_filename = f"{instance.release.artist}-{instance.release.release_title}.zip"
     label_path = str(instance.created_by.username)
@@ -91,7 +92,10 @@ def create_zip_file(instance):
 
     # Chequeamos si existe
     if get_zip_file(zip_path, client):
-        return f"media/{zip_path}"
+        return {
+            "message": f"File located succesfully in Cloud.",
+            "filepath": f"{cloud_url}/media/{zip_path}",
+        }
 
     try:
         tracks = instance.release.get_tracks_listed()
@@ -122,17 +126,19 @@ def create_zip_file(instance):
         return {
             "detail": response,
             "message": f"File sent succesfully to Cloud.",
-            "filepath": f"media/{zip_path}",
+            "filepath": f"{cloud_url}/media/{zip_path}",
         }
 
     except NoCredentialsError as e:
         return {
             "error": "Invalid credentials.",
             "detail": str(e),
+            "filepath": None,
         }
 
     except Exception as e:
         return {
             "error": "An error ocurred while creating the zip file.",
             "detail": str(e),
+            "filepath": None,
         }

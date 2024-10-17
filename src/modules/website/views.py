@@ -17,7 +17,7 @@ def downloads(request, release_website_url):
 
     if request.GET.get("download") == "zip":
         zip_file_path = create_zip_file(campaign)
-        return HttpResponseRedirect(zip_file_path)
+        return HttpResponseRedirect(zip_file_path.get("filepath", None))
 
     context = {
         "banner": campaign.release_banner.url,
