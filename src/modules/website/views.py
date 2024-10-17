@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django import http
+from django.http import HttpResponseRedirect
 from django.views.decorators.clickjacking import xframe_options_exempt
 
 from modules.campaigns.models import Campaign
@@ -15,7 +16,8 @@ def downloads(request, release_website_url):
         raise http.Http404("Campaign not found")
 
     if request.GET.get("download") == "zip":
-        return create_zip_file(campaign)
+        zip_file_path = create_zip_file(campaign)
+        return HttpResponseRedirect(zip_file_path)
 
     context = {
         "banner": campaign.release_banner.url,
