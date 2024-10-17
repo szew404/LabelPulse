@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django import http
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from modules.campaigns.models import Campaign
 from modules.services.storage_backends import create_zip_file
 
 
+@xframe_options_exempt
 def downloads(request, release_website_url):
 
     try:
