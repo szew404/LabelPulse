@@ -127,20 +127,22 @@ JAZZMIN_SETTINGS = {
         "labels.track": "fas fa-music",
         "campaigns.campaign": "fas fa-bullhorn",
     },
+    # UI builder tool
     "show_ui_builder": True,
 }
 
 JAZZMIN_UI_TWEAKS = {
+    # texts conf
     "footer_small_text": True,
     "body_small_text": True,
     "brand_small_text": True,
-    "brand_colour": "navbar-dark",
-    "accent": "accent-navy",
+    # navbar and footer
     "navbar": "navbar-white navbar-light",
     "no_navbar_border": True,
     "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
+    # sidebar
     "sidebar_fixed": True,
     "sidebar": "sidebar-dark-indigo",
     "sidebar_nav_small_text": False,
@@ -149,7 +151,10 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_compact_style": False,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": True,
+    # theme
     "theme": "pulse",
+    "brand_colour": "navbar-dark",
+    "accent": "accent-navy",
     "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-primary",
@@ -188,7 +193,7 @@ CELERY_RESULT_SERIALIZER = "json"
 CELERY_BEAT_SCHEDULE = {
     "send-campaign-emails-everyday": {
         "task": "modules.services.tasks.send_campaign_emails",
-        "schedule": 3600.0,
+        "schedule": 3600.0,  # every hour
     },
 }
 
