@@ -111,7 +111,7 @@ JAZZMIN_SETTINGS = {
         },
     ],
     # Forms fieldsets config
-    "changeform_format": "carousel",
+    "changeform_format": "single",
     # Replace the popup to modal
     "related_modal_active": True,
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
