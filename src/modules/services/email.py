@@ -3,6 +3,9 @@ from django.conf import settings
 
 
 class Email:
+    """
+    Connect to the SMPT email backend and send emails
+    """
 
     def connect(self):
         return get_connection(
@@ -13,21 +16,31 @@ class Email:
             use_tls=settings.EMAIL_USE_TLS,
         )
 
-    def send_email(self, subject: str, recipient_list: list, message: str):
-        conn = self.connect()
+    def send_email(self, subject: str, recipient_list: list, message: str) -> int:
+        conn = self.connect()  # Get connection
+
         try:
             msg = EmailMessage(
                 subject=subject,
                 body=message,
-                from_email=settings.EMAIL_HOST_USER,
+                from_email=("LabelPulse", settings.EMAIL_HOST_USER),
                 to=recipient_list,
                 connection=conn,
+                headers={
+                    "Priority": "Urgent",
+                    "X-Priority": 1,
+                    "Importance": "high",
+                },
             )
         except BaseException as e:
             raise print(f"Error while creating email message: {e}")
 
+        # Setup HTML
         msg.content_subtype = "html"
+
         try:
-            return msg.send()
+            return msg.send(
+                fail_silently=False,  # Do not return an exception
+            )
         except Exception as e:
             raise print(f"Error sending the email: {e}")
