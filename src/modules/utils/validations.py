@@ -6,8 +6,8 @@ def validate_upload(instance):
     # Label Logo
     if hasattr(instance, "label_logo") and instance.label_logo:
         img = Image.open(instance.label_logo)
-        if img.width != 300 or img.height != 300:
-            raise ValidationError("Image must be 300x300 pixels.")
+        if img.width != 200 or img.height != 100:
+            raise ValidationError("Image must be 200x100 pixels.")
 
         if not instance.label_logo.name.lower().endswith((".png")):
             raise ValidationError("Image must be in PNG format.")

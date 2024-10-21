@@ -186,7 +186,7 @@ class Label(models.Model):
     label_logo = models.ImageField(
         upload_to=upload_path,
         storage=MediaStorage(),
-        help_text="This logo will appear on the promotional email. Width & Height: 300px. File format permited: PNG",
+        help_text="This logo will appear on the promotional email. Make sure that this logo has no background. Width: 200px - Height: 100px. File format permited: PNG",
         default="default-images/label-logo-default.png",
     )
 
