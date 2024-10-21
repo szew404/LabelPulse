@@ -113,7 +113,7 @@ JAZZMIN_SETTINGS = {
     # Forms fieldsets config
     "changeform_format": "single",
     # Replace the popup to modal
-    "related_modal_active": True,
+    # "related_modal_active": True,
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
     "order_with_respect_to": ["auth", "labels", "campaigns"],
     # Icons side bar
