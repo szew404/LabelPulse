@@ -23,7 +23,7 @@ class Email:
             msg = EmailMessage(
                 subject=subject,
                 body=message,
-                from_email="LabelPulse",
+                from_email=settings.EMAIL_HOST,
                 to=recipient_list,
                 connection=conn,
                 headers={
