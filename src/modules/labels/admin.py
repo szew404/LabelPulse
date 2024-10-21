@@ -16,6 +16,13 @@ class TrackAdmin(admin.ModelAdmin):
         release = Release.objects.get(tracks=obj)
         return release
 
+    # Frontend loader
+    class Media:
+        css = {
+            "all": ("labels/styles/spinner.css",),
+        }
+        js = ("labels/scripts/admin_spinner.js",)
+
     # Model config
     def get_queryset(self, request):
         qs = super().get_queryset(request)
