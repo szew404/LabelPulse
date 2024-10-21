@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
 from django.template.loader import render_to_string
+from django.http import HttpResponse
 
 from .models import Campaign
 from modules.labels.models import Release, Label
@@ -86,8 +87,17 @@ class CampaignAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if not change:
             obj.created_by = request.user
-            label = Label.objects.get(created_by=request.user)
-            obj.label = label
+
+            # Get the user label
+            label = Label.objects.filter(created_by=request.user).first()
+
+            if label:
+                obj.label = label
+            else:
+                return self.message_user(
+                    request=request,
+                    message="Not possible to create the campaign: You doesn't have a record label registered.",
+                )
 
         super().save_model(request, obj, form, change)
 
