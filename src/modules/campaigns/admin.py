@@ -27,6 +27,8 @@ class CampaignAdmin(admin.ModelAdmin):
         "comments",
     ]
 
+    list_select_related = True
+
     # Create
     fieldsets = [
         (

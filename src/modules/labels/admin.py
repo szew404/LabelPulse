@@ -41,6 +41,10 @@ class TrackAdmin(admin.ModelAdmin):
         "created_by_name",
     ]
 
+    list_select_related = True
+
+    list_select_related = ["track", "release"]
+
     # Create
     fieldsets = [
         (
@@ -128,6 +132,12 @@ class ReleaseAdmin(admin.ModelAdmin):
         "artist",
         "release_date",
         "tracks_number",
+    ]
+
+    list_select_related = True
+
+    list_display_links = [
+        "release_title",
     ]
 
     # Create
