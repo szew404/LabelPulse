@@ -45,8 +45,6 @@ class TrackAdmin(admin.ModelAdmin):
 
     list_per_page = 5
 
-    list_select_related = ["track", "release"]
-
     # Create
     fieldsets = [
         (
