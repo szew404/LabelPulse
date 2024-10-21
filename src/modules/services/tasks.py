@@ -30,7 +30,7 @@ def send_campaign_emails():
     for campaign in campaigns:
 
         # Split recipients list
-        recipient_list = campaign.recipients.split(",") if campaign.recipients else []
+        recipient_list = campaign.get_recipients_list() if campaign.recipients else []
 
         for recipient in recipient_list:
             if recipient:

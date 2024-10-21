@@ -11,6 +11,7 @@ from modules.services.storage_backends import MediaStorage
 from modules.utils import (
     validate_upload,
     upload_path,
+    clean_recipients,
 )
 
 
@@ -93,13 +94,19 @@ class Campaign(models.Model):
 
     def count_recipients(self):
         try:
-            re = (self.recipients).split(",")
+            re = clean_recipients(self.recipients)
             return len(re)
         except Exception as e:
             raise {"Error while obtaining the e-mail addresses of the recipients.": {e}}
 
     def get_template(self):
         return self.template.url
+
+    def get_recipients_list(self):
+        try:
+            return clean_recipients(self.recipients)
+        except Exception as e:
+            raise {"Error while obtaining the e-mail addresses of the recipients.": {e}}
 
 
 # Pre save actions
