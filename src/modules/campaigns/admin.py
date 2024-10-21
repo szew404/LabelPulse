@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
 from django.template.loader import render_to_string
-from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 from .models import Campaign
 from modules.labels.models import Release, Label
@@ -97,8 +97,9 @@ class CampaignAdmin(admin.ModelAdmin):
                 self.message_user(
                     request=request,
                     message="Not possible to create the campaign: You doesn't have a record label registered.",
+                    level=messages.ERROR,
                 )
-                return HttpResponseRedirect(request.path)
+                return
 
         super().save_model(request, obj, form, change)
 
