@@ -43,6 +43,8 @@ class TrackAdmin(admin.ModelAdmin):
 
     list_select_related = True
 
+    list_per_page = 5
+
     list_select_related = ["track", "release"]
 
     # Create
@@ -133,6 +135,8 @@ class ReleaseAdmin(admin.ModelAdmin):
         "release_date",
         "tracks_number",
     ]
+
+    list_per_page = 5
 
     list_select_related = True
 

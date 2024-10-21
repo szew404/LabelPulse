@@ -29,6 +29,8 @@ class CampaignAdmin(admin.ModelAdmin):
 
     list_select_related = True
 
+    list_per_page = 5
+
     # Create
     fieldsets = [
         (
