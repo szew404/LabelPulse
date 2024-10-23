@@ -38,9 +38,9 @@ class CampaignAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "release",
+                    "release_banner",
                     "sent_date",
                     "recipients",
-                    "release_banner",
                 )
             },
         ),
