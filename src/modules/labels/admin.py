@@ -193,7 +193,7 @@ class LabelAdmin(admin.ModelAdmin):
         qs = super().get_queryset(request)
         if request.user.is_superuser:
             return qs
-        return qs.filter(created_by=request.user)
+        return qs.filter(created_by=request.user).distinct()
 
     def had_change_permission(self, request, obj=None):
         if obj is not None and not request.user.is_superuser:
