@@ -207,6 +207,18 @@ class LabelAdmin(admin.ModelAdmin):
             return False
         return True
 
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return (
+                "legal_first_name",
+                "legal_last_name",
+                "legal_email",
+                "legal_country",
+                "legal_city",
+                "legal_address",
+            )
+        return self.readonly_fields
+
     def save_model(self, request, obj, form, change):
         if not change:
             obj.created_by = request.user
