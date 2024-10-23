@@ -1,0 +1,16 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+    <div class="dashboard-welcome">
+        <h1>Bienvenido al Panel de Administración</h1>
+    </div>
+
+    {{ block.super }}
+
+    {% block campaigns %}
+    {% endblock %}
+
+    {% block recent_actions %}
+    {% endblock %}
+
+{% endblock %}

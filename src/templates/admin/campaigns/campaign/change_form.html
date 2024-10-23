@@ -4,7 +4,8 @@
 
     <div style="display: flex; gap: 10px; margin-bottom: 20px;">
         <!-- Previsualización Desktop -->
-        <div style="border: 1px solid #ccc; height: 600px; width: 75%; overflow-y: scroll; padding: 10px;">
+
+        {% comment %} <div style="border: 1px solid #ccc; height: 600px; width: 75%; overflow-y: scroll; padding: 10px;">
             <h3>Desktop</h3>
             <!-- Aquí va tu template HTML para Desktop -->
             
@@ -550,7 +551,10 @@
             </body>
             </html>
 
-        </div>
+        </div> {% endcomment %}
+
+
+        {{ block.super }}
 
         <!-- Previsualización Mobile -->
 
@@ -1106,5 +1110,4 @@
 
     </div>
 
-    {{ block.super }}
 {% endblock %}
