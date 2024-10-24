@@ -135,17 +135,17 @@ UNFOLD = {
                     {
                         "title": _("Releases"),
                         "icon": "queue_music",
-                        "url": "/admin/labels/release/",
+                        "link": "/admin/labels/release/",
                     },
                     {
                         "title": _("Tracks"),
                         "icon": "art_track",
-                        "url": "/admin/labels/track/",
+                        "link": "/admin/labels/track/",
                     },
                     {
                         "title": _("Campaigns"),
                         "icon": "forward_to_inbox",
-                        "url": "/admin/campaigns/campaign/",
+                        "link": "/admin/campaigns/campaign/",
                     },
                 ],
             },
