@@ -108,18 +108,18 @@ UNFOLD = {
             {
                 "title": _("Navigation"),
                 "separator": True,  # Top border
-                "collapsible": True,  # Collapsible group of links
+                "collapsible": False,  # Collapsible group of links
                 "items": [
                     {
                         "title": _("Users"),
                         "icon": "people",
-                        "link": "/admin/auth/users/",
+                        "link": "/admin/auth/user/",
                         "permission": lambda request: request.user.is_superuser,
                     },
                     {
-                        "title": _("Users"),
+                        "title": _("Groups"),
                         "icon": "group",
-                        "link": "/admin/auth/groups/",
+                        "link": "/admin/auth/group/",
                         "permission": lambda request: request.user.is_superuser,
                     },
                     {
