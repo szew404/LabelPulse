@@ -70,15 +70,6 @@ class Track(models.Model):
         verbose_name_plural = "Tracks"
 
 
-"""# Change the name of the track file to: artist name - track title
-@receiver(post_save, sender=Track)
-def rename_track_file(sender, instance, created, **kwargs):
-    if created:
-        new_title = clean_file_name(instance)
-        instance.track_file.name = new_title
-        instance.save()"""
-
-
 # Remove the file post delete
 @receiver(post_delete, sender=Track)
 def delete_file_after_deleted_obj(sender, instance, **kwargs):
@@ -155,15 +146,6 @@ class Release(models.Model):
         return self.tracks.count()
 
 
-"""# Change the name of the artwork file to: Release Title - Artwork
-@receiver(post_save, sender=Release)
-def rename_artwork_file(sender, instance, created, **kwargs):
-    if created:
-        new_title = clean_file_name(instance)
-        instance.release_artwork.name = new_title
-        instance.save()"""
-
-
 # Remove the file post delete
 @receiver(post_delete, sender=Release)
 def delete_file_after_deleted_obj(sender, instance, **kwargs):
@@ -176,6 +158,7 @@ class Label(models.Model):
     # Label Information
     label_name = models.CharField(max_length=100, blank=False, null=False, unique=True)
     country = models.CharField(max_length=100, blank=False, null=False)
+    about = models.TextField(max_length=400, blank=False, null=False, default="")
     genre = models.CharField(
         max_length=100, choices=GENRES_CHOICES, blank=False, null=False
     )
@@ -230,19 +213,6 @@ class Label(models.Model):
     def clean(self):
         super().clean()
         validate_upload(self)
-
-
-"""# Change the name of the logo file to: Label Name - Logo
-@receiver(pre_save, sender=Label)
-def rename_logo_file(sender, instance, **kwargs):
-    if instance.pk:
-        old_instance = Label.objects.get(pk=instance.pk)
-        if old_instance.label_logo != instance.label_logo:
-            filename = f"{instance.label_name}-Logo.png"
-            instance.label_logo.name = filename
-    else:
-        filename = f"{instance.label_name}-Logo.png"
-        instance.label_logo.name = filename"""
 
 
 # Remove the file post delete
