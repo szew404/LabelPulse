@@ -2,9 +2,11 @@ from django.contrib import admin
 from .models import Label, Release, Track
 from django.utils.html import format_html
 
+from unfold.admin import ModelAdmin
+
 
 @admin.register(Track)
-class TrackAdmin(admin.ModelAdmin):
+class TrackAdmin(ModelAdmin):
 
     # Utils
     def created_by_name(self, obj):
@@ -78,7 +80,7 @@ class TrackAdmin(admin.ModelAdmin):
 
 
 @admin.register(Release)
-class ReleaseAdmin(admin.ModelAdmin):
+class ReleaseAdmin(ModelAdmin):
 
     # Utils
     def tracks_number(self, obj):
@@ -180,7 +182,7 @@ class ReleaseAdmin(admin.ModelAdmin):
 
 
 @admin.register(Label)
-class LabelAdmin(admin.ModelAdmin):
+class LabelAdmin(ModelAdmin):
 
     # Utils
     def created_by_name(self, obj):

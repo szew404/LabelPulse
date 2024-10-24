@@ -4,12 +4,14 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.contrib import messages
 
+from unfold.admin import ModelAdmin
+
 from .models import Campaign
 from modules.labels.models import Release, Label
 
 
 @admin.register(Campaign)
-class CampaignAdmin(admin.ModelAdmin):
+class CampaignAdmin(ModelAdmin):
 
     # Management
     ordering = ["release"]
