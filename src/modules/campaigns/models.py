@@ -59,7 +59,7 @@ class Campaign(models.Model):
         null=False,
         default="gidaszewskifranco@gmail.com",
     )
-    campaign_sent = models.BooleanField(default=False)
+    campaign_sent = models.BooleanField("Sent", default=False)
 
     # Test campaign
     test_email_address = models.EmailField(

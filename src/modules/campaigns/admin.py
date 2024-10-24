@@ -44,13 +44,8 @@ class CampaignAdmin(ModelAdmin):
                     "release_banner",
                     "sent_date",
                     "recipients",
+                    "test_email_address",
                 )
-            },
-        ),
-        (
-            "Test your campaign",
-            {
-                "fields": ("test_email_address",),
             },
         ),
     ]
