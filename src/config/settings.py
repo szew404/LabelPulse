@@ -43,7 +43,7 @@ ALLOWED_HOSTS = (env("DJANGO_ALLOWED_HOSTS")).split(" ")
 
 INSTALLED_APPS = [
     # External Django admin theme
-    "jazzmin",
+    "unfold",
     # Django
     "django.contrib.admin",
     "django.contrib.auth",
@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     "corsheaders",
 ]
 
-# Jazzmin theme config
+"""# Jazzmin theme config
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "LabelPulse",
@@ -164,7 +164,7 @@ JAZZMIN_UI_TWEAKS = {
         "danger": "btn-danger",
         "success": "btn-success",
     },
-}
+}"""
 
 # Logging
 LOGGING = {
