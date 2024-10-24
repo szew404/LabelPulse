@@ -3,6 +3,7 @@ from django.utils.html import format_html
 from django.urls import reverse
 from django.template.loader import render_to_string
 from django.contrib import messages
+from django.core.files.storage import default_storage
 
 from unfold.admin import ModelAdmin
 
@@ -106,6 +107,13 @@ class CampaignAdmin(ModelAdmin):
                     level=messages.ERROR,
                 )
                 return
+
+        if change:
+            old_obj = Campaign.objects.get(pk=obj.pk)
+            if old_obj.banner_release != obj.banner_release:
+
+                if old_obj.banner_release:
+                    default_storage.delete(old_obj.banner_release.name)
 
         super().save_model(request, obj, form, change)
 
