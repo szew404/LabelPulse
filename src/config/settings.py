@@ -113,7 +113,13 @@ UNFOLD = {
                     {
                         "title": _("Users"),
                         "icon": "people",
-                        "link": reverse_lazy("admin:users_user_changelist"),
+                        "link": "/admin/auth/users/",
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Users"),
+                        "icon": "group",
+                        "link": "/admin/auth/groups/",
                         "permission": lambda request: request.user.is_superuser,
                     },
                     {
