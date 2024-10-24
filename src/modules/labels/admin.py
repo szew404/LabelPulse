@@ -186,9 +186,9 @@ class LabelAdmin(ModelAdmin):
 
     # Utils
     def created_by_name(self, obj):
-        return obj.legal_first_name + " " + obj.legal_last_name
+        return obj.created_by.first_name + obj.created_by.last_name
 
-    created_by_name.short_description = "Owner Full Name"
+    created_by_name.short_description = "Owner"
 
     # Permissions
     def get_queryset(self, request):
@@ -197,29 +197,12 @@ class LabelAdmin(ModelAdmin):
             return qs
         return qs.filter(created_by=request.user).distinct()
 
-    def had_change_permission(self, request, obj=None):
-        if obj is not None and not request.user.is_superuser:
-            return obj.label.created_by == request.user
-        return super().has_change_permission(request, obj)
-
     def has_add_permission(self, request):
         if request.user.is_superuser:
             return True
         if Label.objects.filter(created_by=request.user).exists():
             return False
         return True
-
-    def get_readonly_fields(self, request, obj=None):
-        if obj:
-            return (
-                "legal_first_name",
-                "legal_last_name",
-                "legal_email",
-                "legal_country",
-                "legal_city",
-                "legal_address",
-            )
-        return self.readonly_fields
 
     def save_model(self, request, obj, form, change):
         if not change:
@@ -246,22 +229,10 @@ class LabelAdmin(ModelAdmin):
                 "fields": (
                     "label_name",
                     "country",
+                    "about",
                     "genre",
                     "style",
                     "birth_date",
-                )
-            },
-        ),
-        (
-            "Legal Information",
-            {
-                "fields": (
-                    "legal_first_name",
-                    "legal_last_name",
-                    "legal_email",
-                    "legal_country",
-                    "legal_city",
-                    "legal_address",
                 )
             },
         ),

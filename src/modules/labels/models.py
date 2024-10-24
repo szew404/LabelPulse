@@ -6,6 +6,8 @@ from django.dispatch import receiver
 
 from modules.services.storage_backends import MediaStorage
 
+from phonenumber_field.modelfields import PhoneNumberField
+
 from modules.utils import (
     GENRES_CHOICES,
     STYLES_CHOICES,
@@ -179,17 +181,9 @@ class Label(models.Model):
     )
     points = models.IntegerField(default=0)
 
-    # Legal Information
-    legal_first_name = models.CharField(max_length=100, blank=False, null=False)
-    legal_last_name = models.CharField(max_length=100, blank=False, null=False)
-    legal_email = models.EmailField(blank=False, null=False)
-    legal_country = models.CharField(max_length=100, blank=False, null=False)
-    legal_city = models.CharField(max_length=100, blank=False, null=False)
-    legal_address = models.CharField(max_length=100, blank=False, null=False)
-
     # Contact Information
     label_email = models.EmailField(blank=False, null=False, unique=True)
-    phone_number = models.TextField(blank=False, null=False)
+    phone_number = PhoneNumberField(blank=True)
 
     # Social Media Links
     link_1 = models.URLField("Social Media Link 1", blank=False, null=True)
