@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import environ
 
+from django.templatetags.static import static
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
 import os
 
 # Initialise environment variables
@@ -63,6 +67,86 @@ INSTALLED_APPS = [
     "storages",
     "corsheaders",
 ]
+
+# Admin Unfold theme config
+UNFOLD = {
+    "SITE_TITLE": "Label Pulse",
+    "SITE_HEADER": "Label Pulse",
+    "SITE_URL": "hhtps://web.label-pulse.com/",
+    # "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
+    "SITE_ICON": {
+        "light": lambda request: static(
+            "admin/img/labelpulse-sitelogo.png"
+        ),  # light mode
+        "dark": lambda request: static(
+            "admin/img/labelpulse-sitelogo.png"
+        ),  # dark mode
+    },
+    # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
+    "SITE_LOGO": {
+        "light": lambda request: static(
+            "admin/img/labelpulse-sitelogo.png"
+        ),  # light mode
+        "dark": lambda request: static(
+            "admin/img/labelpulse-sitelogo.png"
+        ),  # dark mode
+    },
+    "SITE_SYMBOL": "speed",  # symbol from icon set
+    "SITE_FAVICONS": [
+        {
+            "rel": "icon",
+            "sizes": "32x32",
+            "type": "image/png",
+            "href": lambda request: static("admin/img/labelpulse-favicon.png"),
+        },
+    ],
+    "SHOW_HISTORY": False,  # show/hide "History" button, default: True
+    "SHOW_VIEW_ON_SITE": False,  # show/hide "View on site" button, default: True
+    "SIDEBAR": {
+        "show_search": True,  # Search in applications and models names
+        "navigation": [
+            {
+                "title": _("Navigation"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Users"),
+                        "icon": "people",
+                        "link": reverse_lazy("admin:users_user_changelist"),
+                        "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Home"),
+                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:index"),
+                    },
+                    {
+                        "title": _("My Label"),
+                        "icon": "graphic_eq",
+                        "link": "/admin/labels/label/",
+                    },
+                    {
+                        "title": _("Releases"),
+                        "icon": "queue_music",
+                        "url": "/admin/labels/release/",
+                    },
+                    {
+                        "title": _("Tracks"),
+                        "icon": "art_track",
+                        "url": "/admin/labels/track/",
+                    },
+                    {
+                        "title": _("Campaigns"),
+                        "icon": "forward_to_inbox",
+                        "url": "/admin/campaigns/campaign/",
+                    },
+                ],
+            },
+        ],
+    },
+}
+
 
 """# Jazzmin theme config
 JAZZMIN_SETTINGS = {
