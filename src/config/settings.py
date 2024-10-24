@@ -72,7 +72,7 @@ INSTALLED_APPS = [
 UNFOLD = {
     "SITE_TITLE": "Label Pulse",
     "SITE_HEADER": "Label Pulse",
-    "SITE_URL": "hhtps://web.label-pulse.com/",
+    "SITE_URL": "https://web.label-pulse.com/",
     # "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
     "SITE_ICON": {
         "light": lambda request: static(
