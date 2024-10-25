@@ -1,9 +1,16 @@
-{% extends "admin/popup_response.html" %}
+{% extends "admin/change_form.html" %}
 
 {% block content %}
 
+{{ block.super }}
+
 <style>
     .loading-spinner {
+        position: fixed; /* Para que siempre esté en la parte superior de la pantalla */
+        top: 0;
+        left: 50%; /* Centra el spinner horizontalmente */
+        transform: translateX(-50%); /* Ajusta la posición al centro */
+        z-index: 9999; /* Asegura que esté sobre todo el contenido */
         height: 4.5px;
         width: 145.6px;
         background: linear-gradient(#474bff 0 0),
@@ -13,7 +20,7 @@
         background-repeat: no-repeat;
         animation: progress-7x9cg2 3s infinite;
     }
-    
+        
     @keyframes progress-7x9cg2 {
         0% {
             background-position: -150% 0, -150% 0;
@@ -30,8 +37,6 @@
 </style>
 
 <div id="spinner-container" class="loading-spinner" style="display: none;"></div>
-
-{{ block.super }}
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
