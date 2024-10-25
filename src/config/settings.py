@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "modules.services",
     "modules.labels",
     "modules.campaigns",
+    "modules.auth",
     # External
     "rest_framework",
     "drf_spectacular",
@@ -217,6 +218,16 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
+]
+
+LOGOUT_REDIRECT_URL = "https://web.label-pulse.com/"
 
 CORS_ALLOWED_ORIGINS = [
     "http://web:8000",

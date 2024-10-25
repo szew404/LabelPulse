@@ -45,3 +45,4 @@ django-environ==0.11.2
 django-unfold==0.40.0
 django-phonenumber-field==8.0.0
 phonenumberslite==8.13.48
+argon2-cffi==23.1.0
