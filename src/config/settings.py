@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     "modules.services",
     "modules.labels",
     "modules.campaigns",
-    "modules.auth",
+    "modules.registration",
     # External
     "rest_framework",
     "drf_spectacular",
