@@ -38,6 +38,7 @@
     
         saveBtn.addEventListener('click', function () {
             spinner.style.display = 'block';
+            saveBtn.disabled = true;
     
             if (isPopup) {
                 form.style.opacity = '0.3'; 
