@@ -46,6 +46,7 @@ class Track(models.Model):
         upload_to=upload_path,
         storage=MediaStorage(),
         help_text="Track format permitted: MP3",
+        blank=False,
     )
 
     # DB
@@ -122,6 +123,7 @@ class Release(models.Model):
         storage=MediaStorage(),
         help_text="This image will appear on the promotional email.",
         default="media/default-images/label-logo-default.png",
+        blank=False,
     )
 
     # DB
@@ -173,6 +175,7 @@ class Label(models.Model):
         storage=MediaStorage(),
         help_text="This logo will appear on the promotional email. Make sure that this logo has no background. Width: 200px - Height: 100px. File format permited: PNG",
         default="default-images/label-logo-default.png",
+        blank=False,
     )
 
     # Releases Information
