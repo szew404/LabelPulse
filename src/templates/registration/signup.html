@@ -4,8 +4,18 @@
 
 {% block bodyclass %}{{ block.super }}bg-gray-50 login dark:bg-gray-900{% endblock %}
 
+{% block usertools %}{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block nav-sidebar %}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
 {% block title %}
-    {{ title }} | {{ site_title }}
+    Sign Up | Label Pulse
 {% endblock %}
 
 {% block base %}
@@ -14,7 +24,7 @@
             <div class="w-full sm:w-96">
                 <h1 class="font-semibold mb-10">
                     <span class="block text-font-important-light dark:text-font-important-dark">{% blocktrans %}Welcome to{% endblocktrans %}</span>
-                    <span class="block text-primary-600 text-xl dark:text-primary-500">{{ site_title }}</span>
+                    <span class="block text-primary-600 text-xl dark:text-primary-500">Label Pulse</span>
                 </h1>
 
                 {% include "unfold/helpers/messages/errornote.html" with errors=form.errors %}
@@ -22,10 +32,6 @@
                 {% include "unfold/helpers/messages/error.html" with errors=form.non_field_errors %}
 
                 <form method="post" id="login-form">
-
-                    {% include "unfold/helpers/field.html" with field=form.username %}
-
-                    {% include "unfold/helpers/field.html" with field=form.password %}
 
                     {% csrf_token %}
                     
@@ -43,7 +49,7 @@
             </div>
 
             <div class="absolute flex flex-row items-center justify-between left-0 m-4 right-0 top-0">
-                <a href="{{ site_url }}" class="flex font-medium items-center text-sm text-primary-600 dark:text-primary-500">
+                <a href="https://web.label-pulse.com/" class="flex font-medium items-center text-sm text-primary-600 dark:text-primary-500">
                     <span class="material-symbols-outlined mr-2">arrow_back</span> {% blocktrans %}Return to site{% endblocktrans %}
                 </a>
 
