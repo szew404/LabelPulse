@@ -2,6 +2,11 @@
 
 {% load i18n static %}
 
+{% block extrastyle %}
+    {{ block.super }}
+    {{ form.media }}
+{% endblock %}
+
 {% block bodyclass %}{{ block.super }}bg-gray-50 login dark:bg-gray-900{% endblock %}
 
 {% block usertools %}{% endblock %}
@@ -23,9 +28,11 @@
         <div class="flex flex-grow items-center justify-center mx-auto px-4 relative">
             <div class="w-full sm:w-96">
                 <h1 class="font-semibold mb-10">
-                    <span class="block text-font-important-light dark:text-font-important-dark">{% blocktrans %}Welcome to{% endblocktrans %}</span>
+                    <span class="block text-font-important-light dark:text-font-important-dark">{% blocktrans %}Create your account at{% endblocktrans %}</span>
                     <span class="block text-primary-600 text-xl dark:text-primary-500">Label Pulse</span>
                 </h1>
+
+                {% include "unfold/helpers/messages.html" %}
 
                 {% include "unfold/helpers/messages/errornote.html" with errors=form.errors %}
 
@@ -57,6 +64,7 @@
                     <span class="material-symbols-outlined mr-2">arrow_back</span> {% blocktrans %}Return to site{% endblocktrans %}
                 </a>
 
+                {% include "unfold/helpers/theme_switch.html" %}
             </div>
         </div>
     </div>
