@@ -114,39 +114,39 @@ UNFOLD = {
                     {
                         "title": _("Users"),
                         "icon": "people",
-                        "link": "/admin/auth/user/",
+                        "link": "/dashboard/auth/user/",
                         "permission": lambda request: request.user.is_superuser,
                     },
                     {
                         "title": _("Groups"),
                         "icon": "group",
-                        "link": "/admin/auth/group/",
+                        "link": "/dashboard/auth/group/",
                         "permission": lambda request: request.user.is_superuser,
                     },
                     {
                         "title": _("Home"),
                         "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("admin:index"),
+                        "link": reverse_lazy("dashboard:index"),
                     },
                     {
                         "title": _("My Label"),
                         "icon": "graphic_eq",
-                        "link": "/admin/labels/label/",
+                        "link": "/dashboard/labels/label/",
                     },
                     {
                         "title": _("Releases"),
                         "icon": "queue_music",
-                        "link": "/admin/labels/release/",
+                        "link": "/dashboard/labels/release/",
                     },
                     {
                         "title": _("Tracks"),
                         "icon": "art_track",
-                        "link": "/admin/labels/track/",
+                        "link": "/dashboard/labels/track/",
                     },
                     {
                         "title": _("Campaigns"),
                         "icon": "forward_to_inbox",
-                        "link": "/admin/campaigns/campaign/",
+                        "link": "/dashboard/campaigns/campaign/",
                     },
                 ],
             },
