@@ -86,6 +86,12 @@
                 <form method="post" id="login-form">
 
                     {% csrf_token %}
+
+                    {% include "unfold/helpers/field.html" with field=form.first_name %}
+
+                    {% include "unfold/helpers/field.html" with field=form.last_name %}
+
+                    {% include "unfold/helpers/field.html" with field=form.email %}
                     
                     {% include "unfold/helpers/field.html" with field=form.username %}
 
