@@ -126,7 +126,7 @@ UNFOLD = {
                     {
                         "title": _("Home"),
                         "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("dashboard:index"),
+                        "link": reverse_lazy("admin:index"),
                     },
                     {
                         "title": _("My Label"),
