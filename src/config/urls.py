@@ -19,8 +19,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
+from django.shortcuts import redirect
+
+
+def dashboard_redirect(request):  # redirect from "/" to "/dashboard"
+    return redirect("https://label-pulse.com/dashboard")
+
 
 urlpatterns = [
+    path("/", dashboard_redirect, name=""),
     path("dashboard/", admin.site.urls),
     path("website/", include("modules.website.urls")),
     path("campaigns/", include("modules.campaigns.urls")),
