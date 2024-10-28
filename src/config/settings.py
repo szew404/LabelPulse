@@ -318,9 +318,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_URL = "dashboard/login/"
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
