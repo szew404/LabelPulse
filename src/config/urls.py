@@ -27,7 +27,7 @@ def dashboard_redirect(request):  # redirect from "/" to "/dashboard"
 
 
 urlpatterns = [
-    path("/", dashboard_redirect, name=""),
+    path("", dashboard_redirect, name=""),
     path("dashboard/", admin.site.urls),
     path("website/", include("modules.website.urls")),
     path("campaigns/", include("modules.campaigns.urls")),
