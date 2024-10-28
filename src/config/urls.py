@@ -18,10 +18,10 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path, include, reverse_lazy
+from django.urls import path, include
 
 urlpatterns = [
-    path("/", reverse_lazy("admin:index")),
+    path("", admin.site.urls),
     path("dashboard/", admin.site.urls),
     path("website/", include("modules.website.urls")),
     path("campaigns/", include("modules.campaigns.urls")),
