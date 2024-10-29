@@ -65,8 +65,7 @@
                             <i class="material-symbols-outlined ml-2 relative right-0 text-lg transition-all group-hover:-right-1">arrow_forward</i>
                         </button>
                     </div>
-
-                    <span style="margin-top: 15px;">Don't have an account? <a href="https://label-pulse.com/accounts/signup/">Sign Up</a></span>
+                    
 
                     {% if password_reset_url %}
                         <div class="password-reset-link">
@@ -76,6 +75,10 @@
                         </div>
                     {% endif %}
                 </form>
+
+                <div style="display: flex; justify-content: center; text-align: center; margin-top: 10px;">
+                    <span style="margin-top: 15px;">Don't have an account? <a href="https://label-pulse.com/accounts/signup/" style="text-decoration: underline;">Sign Up</a></span>
+                </div>
 
                 {% block login_after %}{% endblock %}
             </div>
