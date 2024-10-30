@@ -42,7 +42,7 @@ wcwidth==0.2.13
 gunicorn>=20.0
 django-cors-headers==4.4.0
 django-environ==0.11.2
-dj-unfold-labelpulse>=0.40.0
+dj-unfold-labelpulse>=0.0.1
 django-phonenumber-field==8.0.0
 phonenumberslite==8.13.48
 argon2-cffi==23.1.0
